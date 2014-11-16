@@ -1,0 +1,23 @@
+---
+- name: Create and apply EX configuration
+  hosts: ex
+  connection: local
+  gather_facts: no
+  roles:
+    - common
+    - ex
+  tasks:
+    - name: assembling configfurations
+      assemble: src={{ build_dir }} dest={{ junos_conf }}
+      notify:
+        - Pushing config ... please wait
+
+  handlers:
+    - name: Pushing config ... please wait 
+      junos_install_config: >
+        host={{ inventory_hostname }}
+        user=jnpr
+        passwd=pass123
+        file={{ junos_conf }}
+        overwrite=yes
+        logfile=logs/{{ inventory_hostname }}.log

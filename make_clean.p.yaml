@@ -1,0 +1,13 @@
+---
+- name: Creating build directories for each host
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - set_fact: 
+        build_dir: build/{{ inventory_hostname }}/tmp
+        junos_conf: build/{{ inventory_hostname}}/junos.conf
+    - name: remove host build temp directory
+      file: path={{ build_dir }} state=absent
+    - name: create host build temp directory
+      file: path={{ build_dir }} state=directory

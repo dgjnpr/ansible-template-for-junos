@@ -1,0 +1,23 @@
+---
+- name: Create and apply MX configuration
+  hosts: mx
+  connection: local
+  gather_facts: no
+  roles:
+    - common
+    - mx
+  tasks:
+    - name: assembling configfurations
+      assemble: src={{ build_dir }} dest={{ junos_conf }}
+      notify:
+        - Pushing config ... please wait
+
+  handlers:
+    - name: Pushing config ... please wait 
+      junos_install_config: >
+        host={{ inventory_hostname }}
+        user=jnpr
+        passwd=pass123
+        file={{ junos_conf }}
+        overwrite=yes
+        logfile=logs/{{ inventory_hostname }}.log

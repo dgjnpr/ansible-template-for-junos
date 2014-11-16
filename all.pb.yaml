@@ -1,0 +1,13 @@
+---
+- include: make_clean.p.yaml
+
+# add the tasks for each of the device types into this section
+# these tasks just define which hosts group name and the roles they play
+- include: ex.p.yaml
+- include: mx.p.yaml
+- include: qfabric.p.yaml
+- include: qfx.p.yaml
+- include: srx.p.yaml
+
+# Finally push the config to the devices
+- include: commit_config.p.yaml

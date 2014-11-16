@@ -1,0 +1,97 @@
+system {
+    time-zone {{ location.time_zone }};
+    authentication-order tacplus;
+    root-authentication {
+        encrypted-password "{{ global.root_hash }}";
+    }
+    name-server {
+    {% for name_server in location.name_servers %}
+        {{ name_server }};
+    {% endfor %}
+    }
+    tacplus-server {
+    {% for tacacs_server in location.tacacs_servers %}
+        {{ tacacs_server.ip }} secret "{{ tacacs_server.secret }}";
+    {% endfor %}
+    }
+    services {
+        netconf {
+            ssh;
+        }
+    }
+    login {
+        message "{{ global.login_message }}";
+        class SUPERUSER {
+            idle-timeout 5;
+            permissions all;
+        }
+        class READONLY {
+            idle-timeout 5;
+            permissions [ view view-configuration ];
+        }
+        user RW {
+            class SUPERUSER;
+        }
+        user RO {
+            class READONLY;
+        }
+        user netadmin {
+            class SUPERUSER;
+            authentication {
+                encrypted-password "{{ global.root_hash }}";
+            }
+        } 
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        {% for server in location.syslog_servers %}
+        host {{ server }} {
+            any any;
+            daemon info;
+        }
+        {% endfor %}
+        file important_messages {
+            any error;
+            explicit-priority;
+        }
+        file link_updown {
+            any info;
+            match "LINK_DOWN|LINK_UP";
+            explicit-priority;
+        }
+        file messages {
+            any notice;
+        }
+        file cli-commands {
+            interactive-commands any; 
+            explicit-priority;
+        }
+        time-format millisecond;
+    }
+    ntp {
+        {% for ntp_server in location.ntp_servers %}
+        server {{ ntp_server }};
+        {% endfor %}
+    }
+}
+snmp { 
+    location "{{ location.snmp.location }}"; 
+    contact "{{ location.snmp.contact }}";
+    {% for snmp in location.snmp_polling %}
+    community {{ snmp.community }} { 
+        authorization read-only; 
+        clients {
+            {{ snmp.clients }};
+        }
+    }
+    {% endfor %}
+    {% for snmp in location.snmp_traps %}
+    trap-group {{ snmp.group_name }} { 
+        targets { 
+            {{ snmp.target }};
+        }
+    }
+    {% endfor %}
+} 
