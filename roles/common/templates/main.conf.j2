@@ -1,5 +1,4 @@
 system {
-    host-name {{ inventory_hostname }};
     time-zone {{ location.time_zone }};
     authentication-order tacplus;
     root-authentication {
@@ -61,7 +60,7 @@ interfaces {
     lo0 {
         unit 0 {
             family inet {
-                address {{ host.loopback.ip }}/{{ host.loopback.mask }};p
+                address {{ host.loopback.ip }}/{{ host.loopback.mask }};
             }
         }
     }

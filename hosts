@@ -26,7 +26,7 @@ site2_srx
 # Just specify the hostname - not the FQDN
 [site1_mx]
 core1.site1
-core1.site1
+core2.site1
 
 # This is the same as 'site1_mx'
 [site1_qfabric]
