@@ -1,6 +1,11 @@
 ---
-# add the tasks for each of the device types into this section
-# these tasks just define which hosts group name and the roles they play
+# This playbook will generate and apply configuration to all of the devices
+# The name of the playbooks are based on the platform group names used in the 
+# hosts file, but that is not manditory.
+# 
+# There is one playbook per platform to take into account the platform
+# variations. As we have defined these files all we have to do is include
+# them in this file and they will be executed.
 - include: ex.p.yaml
 - include: mx.p.yaml
 - include: qfabric.p.yaml
