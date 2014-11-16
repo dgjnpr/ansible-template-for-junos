@@ -8,6 +8,6 @@
 # them in this file and they will be executed.
 - include: ex.p.yaml
 - include: mx.p.yaml
-- include: qfabric.p.yaml
-- include: qfx.p.yaml
-- include: srx.p.yaml
+# - include: qfabric.p.yaml
+# - include: qfx.p.yaml
+# - include: srx.p.yaml

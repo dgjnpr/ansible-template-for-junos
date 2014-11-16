@@ -16,7 +16,7 @@
 # The hosts field must match a group or hostname in the hosts file.
 # All roles, tasks (and associated handlers) are executed against the hosts
 # that are part of that group.
-# Here we are apply configuration for all EXs regardless of location
+# Here we are apply configuration for all MXs regardless of location
   hosts: mx
 # This tells ansible to not connect to the host and try to gather facts about
 # it. Ansible assumes it can SSH and get a shell prompt. It does not know
