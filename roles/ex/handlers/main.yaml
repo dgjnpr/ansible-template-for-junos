@@ -1,0 +1,9 @@
+---
+- name: Pushing config ... please wait 
+  junos_install_config: >
+    host={{ inventory_hostname }}
+    user=jnpr
+    passwd=pass123
+    file={{ junos_conf }}
+    overwrite=yes
+    logfile=logs/{{ inventory_hostname }}.log

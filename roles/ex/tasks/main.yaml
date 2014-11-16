@@ -1,0 +1,14 @@
+---
+- set_fact: 
+    build_dir: build/{{ inventory_hostname }}/tmp
+    junos_conf: build/{{ inventory_hostname}}/junos.conf
+
+- name: Building EX configuration
+  template: >
+    src=main.conf.j2
+    dest={{ build_dir }}/main.conf.part
+
+- name: Assembling configfurations
+  assemble: src={{ build_dir }} dest={{ junos_conf }}
+  notify:
+    - Pushing config ... please wait
