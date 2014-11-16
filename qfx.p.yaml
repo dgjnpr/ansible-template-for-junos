@@ -1,23 +1,31 @@
 ---
-- name: Create and apply QFX configuration
-  hosts: qfx
+- hosts: all
   connection: local
   gather_facts: no
+  tasks:
+    - set_fact: 
+        build_dir: /Users/dgethings/git/ansible-template-for-junos/build/{{ inventory_hostname }}/tmp
+        junos_conf: /Users/dgethings/git/ansible-template-for-junos/build/{{ inventory_hostname }}/junos.conf
+    - name: create host build temp directory
+      file: path={{ build_dir }} state=directory
+
+# This line is printed during ansible execution so it helps to describe
+# what is happening. This help both for debugging (if ansible fails to
+# complete for some reason) or confirmation that a step is complete
+- name: Create and apply QFX configuration
+# The hosts field must match a group or hostname in the hosts file.
+# All roles, tasks (and associated handlers) are executed against the hosts
+# that are part of that group.
+# Here we are apply configuration for all MXs regardless of location
+  hosts: qfx
+# This tells ansible to not connect to the host and try to gather facts about
+# it. Ansible assumes it can SSH and get a shell prompt. It does not know
+# it is communicating with a Junos device and does not understand it's CLI.
+  connection: local
+  gather_facts: no
+# The use of roles enables template reuse - for example the common role is
+# reused in all the playbooks. Roles contain the tasks for generating the
+# configuration. By default Ansible will look in roles/<role name>/tasks/main.yaml to find what tasks it need to perform
   roles:
     - common
     - qfx
-  tasks:
-    - name: assembling configfurations
-      assemble: src={{ build_dir }} dest={{ junos_conf }}
-      notify:
-        - Pushing config ... please wait
-
-  handlers:
-    - name: Pushing config ... please wait 
-      junos_install_config: >
-        host={{ inventory_hostname }}
-        user=jnpr
-        passwd=pass123
-        file={{ junos_conf }}
-        overwrite=yes
-        logfile=logs/{{ inventory_hostname }}.log

@@ -9,5 +9,5 @@
 - include: ex.p.yaml
 - include: mx.p.yaml
 - include: qfabric.p.yaml
-# - include: qfx.p.yaml
+- include: qfx.p.yaml
 # - include: srx.p.yaml
