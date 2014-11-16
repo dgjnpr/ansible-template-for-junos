@@ -21,22 +21,11 @@ system {
     }
     login {
         message "{{ global.login_message }}";
-        class SUPERUSER {
-            idle-timeout 5;
-            permissions all;
+        user remote {
+            class super-user;
         }
-        class READONLY {
-            idle-timeout 5;
-            permissions [ view view-configuration ];
-        }
-        user RW {
-            class SUPERUSER;
-        }
-        user RO {
-            class READONLY;
-        }
-        user netadmin {
-            class SUPERUSER;
+        user local_auth {
+            class super-user;
             authentication {
                 encrypted-password "{{ global.root_hash }}";
             }
@@ -52,15 +41,6 @@ system {
             daemon info;
         }
         {% endfor %}
-        file important_messages {
-            any error;
-            explicit-priority;
-        }
-        file link_updown {
-            any info;
-            match "LINK_DOWN|LINK_UP";
-            explicit-priority;
-        }
         file messages {
             any notice;
         }
@@ -79,7 +59,7 @@ system {
 snmp { 
     location "{{ location.snmp.location }}"; 
     contact "{{ location.snmp.contact }}";
-    {% for snmp in location.snmp_polling %}
+    {% for snmp in location.snmp.polling %}
     community {{ snmp.community }} { 
         authorization read-only; 
         clients {
@@ -87,7 +67,7 @@ snmp {
         }
     }
     {% endfor %}
-    {% for snmp in location.snmp_traps %}
+    {% for snmp in location.snmp.traps %}
     trap-group {{ snmp.group_name }} { 
         targets { 
             {{ snmp.target }};

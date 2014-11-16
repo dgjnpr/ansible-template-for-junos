@@ -1,0 +1,27 @@
+location:
+  time_zone: UTC
+  name_servers:
+    - 10.0.1.1
+    - 10.0.1.2
+  tacacs_servers:
+    - ip: 10.0.1.3
+      secret: $9$DPjmT6/tOIcApclvLVbaZUj.PTz39tu
+    - ip: 10.0.1.4
+      secret: $9$DPjmT6/tOIcApclvLVbaZUj.PTz39tu
+  syslog_servers:
+    - 10.0.1.5
+    - 10.0.1.6
+  ntp_servers:
+    - 10.0.1.7
+    - 10.0.1.8
+  snmp:
+    location: "Site 1"
+    contact: John Doe
+    polling:
+      - community: SuperSecret
+        clients: 10.0.1.0/24
+    traps:
+      - group_name: alarm_system1
+        target: 10.0.1.9
+      - group_name: alarm_system2
+        target: 10.0.1.10

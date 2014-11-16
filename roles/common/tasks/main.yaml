@@ -1,8 +1,4 @@
 ---
-- set_fact: 
-    build_dir: build/{{ inventory_hostname }}/tmp
-    junos_conf: build/{{ inventory_hostname}}/junos.conf
-
 - name: Building common configuration
   template: >
     src=main.conf.j2
