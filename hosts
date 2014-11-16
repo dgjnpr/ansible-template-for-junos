@@ -23,40 +23,41 @@ site2_srx
 # This group lists hosts. In this example MX's provide connectivity between
 # sites. The group name uses the format of <location>_<platoform> as it makes
 # it clearer what is being applied where in the playbooks
+# Just specify the hostname - not the FQDN
 [site1_mx]
-core1.site1.example.com
-core1.site1.example.com
+core1.site1
+core1.site1
 
 # This is the same as 'site1_mx'
 [site1_qfabric]
-switch1.site1.example.com
+switch1.site1
 
 # This is the same as 'site1_mx'
 [site1_srx]
-firewall1.site1.example.com
-firewall2.site1.example.com
+firewall1.site1
+firewall2.site1
 
 # This is the same as 'site1_mx'
 [site2_mx]
-core1.site2.example.com
-core2.site2.example.com
+core1.site2
+core2.site2
 
 # This is the same as 'site1_mx'
 [site2_qfx]
-aggregation1.site2.example.com
-aggregation2.site2.example.com
+aggregation1.site2
+aggregation2.site2
 
 # This is the same as 'site1_mx'
 [site2_ex]
-leaf1.site2.example.com
-leaf2.site2.example.com
-leaf3.site2.example.com
-leaf4.site2.example.com
+leaf1.site2
+leaf2.site2
+leaf3.site2
+leaf4.site2
 
 # This is the same as 'site1_mx'
 [site2_srx]
-firewall1.site2.example.com
-firewall2.site2.example.com
+firewall1.site2
+firewall2.site2
 
 # Creating this group allows for a platform specific group variable file.
 # With this we can put all platform specific - but site independent - 

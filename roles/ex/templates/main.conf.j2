@@ -1,1 +1,9 @@
-foo bar
+interfaces {
+  me0 {
+    unit 0 {
+      family inet {
+        address {{ host.management.ip}}/{{ host.management.mask }};
+      }
+    }
+  }
+}

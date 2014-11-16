@@ -1,4 +1,5 @@
 system {
+    host-name {{ inventory_hostname }};
     time-zone {{ location.time_zone }};
     authentication-order tacplus;
     root-authentication {
@@ -54,6 +55,15 @@ system {
         {% for ntp_server in location.ntp_servers %}
         server {{ ntp_server }};
         {% endfor %}
+    }
+}
+interfaces {
+    lo0 {
+        unit 0 {
+            family inet {
+                address {{ host.loopback.ip }}/{{ host.loopback.mask }};p
+            }
+        }
     }
 }
 snmp { 
