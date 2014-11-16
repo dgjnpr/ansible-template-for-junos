@@ -1,0 +1,12 @@
+system {
+  host-name {{ inventory_hostname }};
+}
+interfaces {
+  fxp0 {
+    unit 0 {
+      family inet {
+        address {{ host.management.ip}}/{{ host.management.mask }};
+      }
+    }
+  }
+}

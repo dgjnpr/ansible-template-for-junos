@@ -1,14 +1,20 @@
 ---
-- set_fact: 
-    build_dir: build/{{ inventory_hostname }}/tmp
-    junos_conf: build/{{ inventory_hostname}}/junos.conf
-
+# This named task uses the Ansible template module to generate the a
+# part of the EX configuration. Once it is done it stores the result
+# in a file
 - name: Building QFabric configuration
   template: >
     src=main.conf.j2
     dest={{ build_dir }}/main.conf.part
 
+# This task merges all the configuration fragments into one file
+# In this example it merges the common.conf.part and main.conf.part
+# into the junos.conf file.
+# If merging the files results in a new file being created then a handler
+# is triggered to push the config onto the device. See ./handler/main.yaml
+# for more information
 - name: Assembling configfurations
   assemble: src={{ build_dir }} dest={{ junos_conf }}
+# This notify triggers the handler. It looks for a handler with this name
   notify:
     - Pushing config ... please wait
