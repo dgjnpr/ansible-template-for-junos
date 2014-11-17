@@ -10,7 +10,7 @@ There are many wapys to use ansible to generate and apply configuration to devic
 
 ## Prerequists
 
-To be able to use the ansible configuration you must have a copy of [Ansible](http://www.ansible.com/install) installed. In order to apply the configuration generated you must have a copy of the [Junos plugin](https://github.com/Juniper/ansible-junos-stdlib) for Ansible installed.
+To be able to use the ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. In order to apply the configuration generated you must have a copy of the [Junos plugin](https://github.com/Juniper/ansible-junos-stdlib) for Ansible installed.
 
 It is assummed you are using a package manager to install Ansible and so other Ansible dependencies are installed when you install Ansible.
 
