@@ -1,4 +1,6 @@
 ---
+# This is a hack to set some variables and have a directory created.
+# Need to work on putting this in the correct location
 - hosts: all
   connection: local
   gather_facts: no
