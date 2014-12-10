@@ -1,4 +1,6 @@
 ---
+# by referencing the 'common' role in the playform specifc plays this task is executed
+# it causes Ansible to generate the common part of the configuration for a host
 - name: Building common configuration
   template: >
     src=main.conf.j2

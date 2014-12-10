@@ -1,4 +1,6 @@
+{# This config is common to all Junos device types. For it to be generated the 'common' role must be included in the platform specific play file. #}
 system {
+    {# the location is based on whether this is site 1 or site 2. Using the variables in this way you apply site specific values without having to use conditional checks. #}
     time-zone {{ location.time_zone }};
     authentication-order tacplus;
     root-authentication {
@@ -18,6 +20,7 @@ system {
         netconf {
             ssh;
         }
+        ssh;
     }
     login {
         message "{{ global.login_message }}";
@@ -27,7 +30,9 @@ system {
         user local_auth {
             class super-user;
             authentication {
+                {# note the local_auth uses the same password as the root user. Not ideal for security, just done out of laziness ;) #}
                 encrypted-password "{{ global.root_hash }}";
+                }
             }
         } 
     }

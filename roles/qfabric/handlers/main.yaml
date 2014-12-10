@@ -4,7 +4,9 @@
 - name: Pushing config ... please wait 
   junos_install_config: >
     host={{ inventory_hostname }}
-    port: 22
+    port=22
+    # the username and password will need to be changed to whatever is 
+    # applicable to your devices
     user=jnpr
     passwd=pass123
     file={{ junos_conf }}
