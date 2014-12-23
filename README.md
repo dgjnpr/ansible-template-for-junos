@@ -86,6 +86,12 @@ You may also use the `--limit` option with this playbook.
 
 Please look through the rest of the files. All of them contain documentation relevant to their purpose.
 
+## How to Use
+
+[Fork](https://help.github.com/articles/fork-a-repo/) this repo and edit the group_vars and/or host_vars files and the templates in the roles. Simply delete the platform specific plays from the `all.pb.yaml` file that you are not interested in.
+
+You can delete the platform specific plays (i.e. ex.p.yaml) and roles directories too, but that is not manditory. It just depends on how tidy you like to be. 
+
 ## Contributing
 
 1. Fork it
