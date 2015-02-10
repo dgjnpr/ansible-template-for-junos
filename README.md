@@ -99,3 +99,7 @@ You can delete the platform specific plays (i.e. ex.p.yaml) and roles directorie
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+# Author
+
+[David Gethings](mailto:trepanningio@gmail.com), Juniper Networks [Follow Dave on Twitter](http://twitter.com/trepanning_io)
