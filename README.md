@@ -12,7 +12,7 @@ There are many ways to use Ansible to generate and apply configuration to device
 
 ## Prerequisites
 
-To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. In order to apply the configuration generated, you must have a copy of the [Junos plugin](https://github.com/Juniper/ansible-junos-stdlib) for Ansible installed.
+To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. In order to apply the configuration generated, you must have a copy of the [Junos plugin](https://github.com/Juniper/ansible-junos-stdlib) for Ansible installed. The Junos plugin requires that [Junos PyEZ](https://github.com/Juniper/py-junos-eznc) is installed too. Finally install the Juniper Ansible role using `sudo ansible-galaxy install Juniper.junos`
 
 Please review the installation documentation for the above to ensure all required dependencies are also installed.
 

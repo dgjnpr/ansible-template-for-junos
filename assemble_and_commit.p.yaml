@@ -28,4 +28,4 @@
         passwd=pass123
         file={{ junos_conf }}
         overwrite=yes
-        logfile=/var/tmp/logs/changes.log
+        logfile=/var/tmp/build/changes.log
