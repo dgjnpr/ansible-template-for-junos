@@ -5,3 +5,17 @@ host:
   loopback:
     ip: 192.168.254.6
     mask: 32
+  core_interfaces:
+    ge-0/0/0:
+      ip: 10.2.0.1
+      mask: 31
+    ge-0/0/1:
+      ip: 10.1.0.5
+      mask: 31
+  agg_sw_interfaces:
+    ge-1/0/0:
+      ip: 10.2.2.0
+      mask: 31
+    ge-1/0/1:
+      ip: 10.2.2.2
+      mask: 31

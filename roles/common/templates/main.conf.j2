@@ -1,3 +1,4 @@
+#jinja2:lstrip_blocks: True
 {# This config is common to all Junos device types. For it to be generated the 'common' role must be included in the platform specific play file. #}
 system {
     {# the location is based on whether this is site 1 or site 2. Using the variables in this way you apply site specific values without having to use conditional checks. #}

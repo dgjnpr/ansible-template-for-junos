@@ -5,3 +5,10 @@ host:
   loopback:
     ip: 192.168.254.10
     mask: 32
+  uplinks:
+    ge-0/0/0:
+      ip: 10.2.3.3
+      mask: 31
+    ge-0/0/1:
+      ip: 10.2.4.3
+      mask: 31
