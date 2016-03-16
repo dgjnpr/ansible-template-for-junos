@@ -4,7 +4,6 @@ host:
     mask: 24
   loopback:
     ip: 192.168.254.7
-    mask: 32
   uplinks:
     ge-0/0/0:
       ip: 10.2.1.1
