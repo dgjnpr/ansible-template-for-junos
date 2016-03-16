@@ -1,7 +1,6 @@
 host:
   management:
     ip: 10.0.255.4
-    mask: 24
   loopback:
     ip: 192.168.255.4
   uplinks:

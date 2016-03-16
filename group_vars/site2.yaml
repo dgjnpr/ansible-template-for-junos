@@ -1,4 +1,5 @@
 location:
+  management_mask: 24
   time_zone: UTC
   name_servers:
     - 10.0.2.1

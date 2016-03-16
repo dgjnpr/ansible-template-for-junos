@@ -1,7 +1,6 @@
 host:
   management:
     ip: 10.0.254.5
-    mask: 24
   loopback:
     ip: 192.168.254.5
   core_interfaces:

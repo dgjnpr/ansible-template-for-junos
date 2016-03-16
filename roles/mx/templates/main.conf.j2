@@ -10,7 +10,7 @@ groups {
       fxp0 {
         unit 0 {
           family inet {
-            address {{ host.management.ip }}/{{ host.management.mask }};
+            address {{ host.management.ip }}/{{ location.management_mask }};
           }
         }
       }
