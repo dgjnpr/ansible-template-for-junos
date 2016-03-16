@@ -4,4 +4,4 @@ host:
     mask: 24
   loopback:
     ip: 192.168.254.1
-    mask: 24
+    mask: 32
