@@ -8,8 +8,6 @@
   hosts: all
   connection: local
   gather_facts: no
-  roles:
-    - Juniper.junos
   tasks:
     - name: assembling configfurations
       assemble: src={{ build_dir }} dest={{ junos_conf }}
@@ -21,11 +19,10 @@
 # junos_install_config module to apply the configuration to the device
   handlers:
     - name: Pushing config ... please wait
-      junos_install_config: >
-        host={{ inventory_hostname }}
-        port={{ PLATFORM.netconf_port }}
-        user=jnpr
-        passwd=pass123
-        file={{ junos_conf }}
-        overwrite=yes
-        logfile=/var/tmp/build/changes.log
+      junos_template: >
+        host: {{ inventory_hostname }}
+        port: {{ PLATFORM.netconf_port }}
+        username: jnpr
+        password: pass123
+        src: {{ junos_conf }}
+        action: overwrite
