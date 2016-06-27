@@ -46,7 +46,7 @@ The [host_vars](https://github.com/dgjnpr/ansible-template-for-junos/tree/master
 
 ### Playbooks
 
-Playbooks are structured hierarchically. To have (syntactic) symmetry with the hosts file, the top playbook is the [all.pb.yaml]()https://github.com/dgjnpr/ansible-template-for-junos/blob/master/all.pb.yaml file. That playbook includes a playbook for each of the platforms.
+Playbooks are structured hierarchically. To have (syntactic) symmetry with the hosts file, the top playbook is the [all.pb.yaml](https://github.com/dgjnpr/ansible-template-for-junos/blob/master/all.pb.yaml) file. That playbook includes a playbook for each of the platforms.
 
 Each platform playbook defines the roles to execute, merges the configuration fragments, and then applies the configuration if the configuration changed.
 
