@@ -1,6 +1,12 @@
+# Ansible version
+
+This repository is designed to work with Ansible 2.1 and above. If you are using Ansible 2.0 or below please see [this version of the repository](https://github.com/dgjnpr/ansible-template-for-junos/tree/ansible-2.0).
+
+The main diference between Ansible 2.0 and 2.1 is that the modules required to work with Junos devices are now bundled with Ansibe itself, have been renamed and had slight modifications to the options they support.
+
 # Ansible for Junos OS
 
-This is an example Ansible configuration demonstrating how to use Ansible to generate and apply Junos configuration to the EX, MX, QFabric, QFX, and SRX Juniper platforms.
+This is an example Ansible configuration demonstrating how to use Ansible to generate and apply Junos configuration to the EX, MX, QFabric, QFX, and SRX Juniper platforms. Additional platforms will function in the same way (such as the ACX or PTX) but as yet have are included in this repository.
 
 The configuration generated will enable system basics such as TACACS+ authentication, NTP, SSH, NETCONF, local and remote authenticated users, syslog, SNMP, a loopback and management interface.
 
@@ -12,7 +18,7 @@ There are many ways to use Ansible to generate and apply configuration to device
 
 ## Prerequisites
 
-To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. In order to apply the configuration generated, you must have a copy of the [Junos plugin](https://github.com/Juniper/ansible-junos-stdlib) for Ansible installed. The Junos plugin requires that [Junos PyEZ](https://github.com/Juniper/py-junos-eznc) is installed too. Finally install the Juniper Ansible role using `sudo ansible-galaxy install Juniper.junos`
+To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed.
 
 Please review the installation documentation for the above to ensure all required dependencies are also installed.
 
@@ -24,21 +30,23 @@ With Ansible's flexibility, some choices have to be made. For some there are no 
 
 ### Hosts File Structure
 
-The Ansible hosts file is one of the most important files to get structurally correct. The structure used allows for global, location, function, and device specific data.
+The Ansible [hosts](https://github.com/dgjnpr/ansible-template-for-junos/blob/master/hosts) file is one of the most important files to get structurally correct. The structure used allows for global, location, function, and device specific data.
 
 For further details, please see the comments in the hosts file.
 
 ### Group Variables
 
-The group_vars directory contains information appropriate globally, per site, and per platform. This is made possible by the structure of the hosts file.
+The [group_vars](https://github.com/dgjnpr/ansible-template-for-junos/tree/master/group_vars) directory contains information appropriate globally, per site, and per platform. This is made possible by the structure of the hosts file.
+
+For example the hosts file deines a site1 group. There is a corresponding [site1.yaml](https://github.com/dgjnpr/ansible-template-for-junos/blob/master/group_vars/site1.yaml) file that deines site1 specific data. 
 
 ### Host Variables
 
-The host_vars files contains device specific information for each of the devices listed in the hosts file. There must be one file for each host defined in the hosts file.
+The [host_vars](https://github.com/dgjnpr/ansible-template-for-junos/tree/master/host_vars) files contains device specific information for each of the devices listed in the hosts file. There must be one file for each host defined in the hosts file.
 
 ### Playbooks
 
-Playbooks are structured hierarchically. To have (syntactic) symmetry with the hosts file, the top playbook is the all.pb.yaml file. That playbook includes a playbook for each of the platforms. 
+Playbooks are structured hierarchically. To have (syntactic) symmetry with the hosts file, the top playbook is the [all.pb.yaml]()https://github.com/dgjnpr/ansible-template-for-junos/blob/master/all.pb.yaml file. That playbook includes a playbook for each of the platforms.
 
 Each platform playbook defines the roles to execute, merges the configuration fragments, and then applies the configuration if the configuration changed.
 
@@ -48,7 +56,7 @@ For further details, please see the comments in each of the playbooks.
 
 ### Roles
 
-Each of the roles just generates the configuration. Each role generates one or more configuration fragment that is merged into one file. Roles are made up of a task and one or more template file.
+Each of the [roles](https://github.com/dgjnpr/ansible-template-for-junos/tree/master/roles) just generates the configuration. Each role generates one or more configuration fragment that is merged into one file. Roles are made up of a task and one or more template file.
 
 For further details, please see the comments in the `roles/*/tasks/main.yaml` files.
 
