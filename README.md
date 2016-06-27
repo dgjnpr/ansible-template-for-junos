@@ -18,7 +18,7 @@ There are many ways to use Ansible to generate and apply configuration to device
 
 ## Prerequisites
 
-To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. The junos_* modules requires that [Junos PyEZ](https://github.com/Juniper/py-junos-eznc) is installed too.
+To be able to use the Ansible configuration you must have a copy of [Ansible](http://docs.ansible.com/intro_installation.html) installed. The junos_* modules requires that [Junos PyEZ](https://github.com/Juniper/py-junos-eznc) is installed. Finally you must also install [JXMLEase](http://jxmlease.readthedocs.io/en/stable/install.html) following these instructions.
 
 Please review the installation documentation for the above to ensure all required dependencies are also installed. These dependencies are platform dependent. However the installation documentation should contain all the documentation you need.
 
