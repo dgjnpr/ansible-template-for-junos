@@ -84,3 +84,26 @@ site2_ex
 [srx:children]
 site1_srx
 site2_srx
+
+# You can also define variables for a group. This is an alternative to defining
+# variables in a group_vars file. To demonstrate this each of the platform
+# group variables will be defined this way. The site group varaibles are 
+# defined using a group_vars file
+[mx:vars]
+netconf_port=830
+
+# This is the same as 'mx'
+[qfabric:vars]
+netconf_port=22
+
+# This is the same as 'mx'
+[qfx:vars]
+netconf_port=830
+
+# This is the same as 'mx'
+[ex:vars]
+netconf_port=830
+
+# This is the same as 'mx'
+[srx:vars]
+netconf_port=830

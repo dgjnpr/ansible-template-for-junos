@@ -21,7 +21,7 @@
     - name: Pushing config ... please wait
       junos_template:
         host: "{{ inventory_hostname }}"
-        port: "{{ PLATFORM.netconf_port }}"
+        port: "{{ netconf_port }}"
         username: jnpr
         password: pass123
         src: "{{ junos_conf }}"
